@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelmate/view/addpost%20screen/addpost.dart';
 import 'package:travelmate/view/event_screen/events.dart';
 import 'package:travelmate/view/homepage/homepage.dart';
 
@@ -13,9 +14,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   List listscreen = [
     EventsScreen(),
     Homepage(),
-    Container(
-      color: Colors.red,
-    ),
+    AddPostScreen(),
     Container(
       color: Colors.black,
     ),
@@ -42,9 +41,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.person,
+                Icons.camera,
               ),
-              label: 'Profile',
+              label: 'feed',
             ),
           ]),
     );

@@ -16,7 +16,7 @@ class _EventsScreenState extends State<EventsScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<eventsControllerScreen>(context, listen: false)
-          .collectionReference;
+          .addEventListner();
     });
     super.initState();
   }
@@ -68,12 +68,17 @@ class _EventsScreenState extends State<EventsScreen> {
                 ),
               ],
             ),
-            SliverList.separated(
-              itemBuilder: (context, index) => CustomTrips(),
-              separatorBuilder: (context, index) => SizedBox(
-                height: 10,
+            Consumer<eventsControllerScreen>(
+              builder: (BuildContext context, value, Widget? child) =>
+                  SliverList.separated(
+                itemBuilder: (context, index) => CustomTrips(
+                  event: value.eventList[index],
+                ),
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10,
+                ),
+                itemCount: value.eventList.length,
               ),
-              itemCount: 5,
             )
           ],
         ));

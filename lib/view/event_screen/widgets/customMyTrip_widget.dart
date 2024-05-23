@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:travelmate/model/eventModelclass.dart';
 
 class CustomTrips extends StatelessWidget {
-  const CustomTrips({super.key});
-
+  const CustomTrips({super.key, required this.event});
+  final EventModel event;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,14 +29,14 @@ class CustomTrips extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Trip name",
+                    event.TripName ?? "",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Row(
                     children: [
                       Icon(Icons.location_on_outlined),
                       Text(
-                        "location",
+                        event.destination ?? "",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
@@ -44,7 +45,7 @@ class CustomTrips extends StatelessWidget {
                 ],
               ),
               Text(
-                "Trip date",
+                event.date ?? "",
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
               )
