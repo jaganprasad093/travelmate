@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:travelmate/view/addpost%20screen/addpost.dart';
+import 'package:provider/provider.dart';
+import 'package:travelmate/controller/postscreen_Controller/postscreen_controller.dart';
+import 'package:travelmate/view/addpost%20screen/addpost1.dart';
+
 import 'package:travelmate/view/event_screen/events.dart';
 import 'package:travelmate/view/homepage/homepage.dart';
 
@@ -14,7 +17,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   List listscreen = [
     EventsScreen(),
     Homepage(),
-    AddPostScreen(),
+    ChangeNotifierProvider(
+        create: (context) => postscreen_controller(), child: AddPostScreen()),
     Container(
       color: Colors.black,
     ),

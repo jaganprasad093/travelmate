@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:travelmate/model/postModelclaa.dart';
 
 class CustomPostWidgets extends StatelessWidget {
-  const CustomPostWidgets({super.key});
+  const CustomPostWidgets({super.key, required this.post});
+  final postModel post;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +41,15 @@ class CustomPostWidgets extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text("description"),
+              child: Text(post.caption ?? ""),
             ),
             Container(
               color: Colors.amber,
               height: 280,
+              child: Image.network(
+                post.image ?? "",
+                fit: BoxFit.cover,
+              ),
             ),
             Spacer(),
             Padding(

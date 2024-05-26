@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:travelmate/view/widgets/customPostWidgets.dart';
+import 'package:provider/provider.dart';
+import 'package:travelmate/controller/postscreen_Controller/postscreen_controller.dart';
+import 'package:travelmate/model/postModelclaa.dart';
+import 'package:travelmate/view/homepage/widgets/customPostWidgets.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -43,12 +46,17 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
-          SliverList.separated(
-            itemBuilder: (context, index) => CustomPostWidgets(),
-            separatorBuilder: (context, index) => SizedBox(
-              height: 10,
+          Consumer<postscreen_controller>(
+            builder: (context, value, child) => SliverList.separated(
+              itemBuilder: (context, index) => CustomPostWidgets(
+                post: value.postList[index],
+                //event: value.eventList[index],
+              ),
+              separatorBuilder: (context, index) => SizedBox(
+                height: 10,
+              ),
+              itemCount: value.postList.length,
             ),
-            itemCount: 5,
           )
         ],
       ),

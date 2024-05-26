@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelmate/controller/event_controller/eventcontroller.dart';
 import 'package:travelmate/controller/loginscreen_controller/login_controller.dart';
+import 'package:travelmate/controller/postscreen_Controller/postscreen_controller.dart';
 import 'package:travelmate/controller/registration_controller/registration_controller.dart';
 import 'package:travelmate/firebase_options.dart';
 import 'package:travelmate/view/splash_screen/splashscreen.dart';
@@ -31,6 +32,9 @@ class Travelmate extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => LoginscreenController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => postscreen_controller(),
         )
       ],
       child: MaterialApp(
