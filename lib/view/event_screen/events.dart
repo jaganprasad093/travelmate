@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:travelmate/controller/event_controller/eventcontroller.dart';
 import 'package:travelmate/model/eventModelclass.dart';
 import 'package:travelmate/view/event_screen/widgets/customMyTrip_widget.dart';
+import 'package:travelmate/view/profile_screen_settings/profilescreen_settings.dart';
 
 class EventsScreen extends StatefulWidget {
   const EventsScreen({super.key});
@@ -61,12 +62,20 @@ class _EventsScreenState extends State<EventsScreen> {
                   ),
                 ],
               ),
-              actions: [
-                CircleAvatar(
-                  child: Icon(Icons.person_sharp),
-                  // backgroundColor: Colors.black,
-                ),
-              ],
+              // actions: [
+              //   CircleAvatar(
+              //     child: InkWell(
+              //         onTap: () {
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                 builder: (context) => ProfileScreen(),
+              //               ));
+              //         },
+              //         child: Icon(Icons.person_sharp)),
+              //     // backgroundColor: Colors.black,
+              //   ),
+              // ],
             ),
             Consumer<eventsControllerScreen>(
               builder: (BuildContext context, value, Widget? child) =>

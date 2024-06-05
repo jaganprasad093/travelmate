@@ -5,6 +5,7 @@ import 'package:travelmate/view/addpost%20screen/addpost1.dart';
 
 import 'package:travelmate/view/event_screen/events.dart';
 import 'package:travelmate/view/homepage/homepage.dart';
+import 'package:travelmate/view/profile_main_screen/profilemain.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key});
@@ -19,9 +20,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     Homepage(),
     ChangeNotifierProvider(
         create: (context) => postscreen_controller(), child: AddPostScreen()),
-    Container(
-      color: Colors.black,
-    ),
+    Profilepage()
   ];
   int selectedIndex = 1;
   @override
@@ -29,7 +28,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     return Scaffold(
       body: listscreen[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black12,
           currentIndex: selectedIndex,
+          fixedColor: Colors.black,
+          unselectedItemColor: Colors.black,
           onTap: (value) {
             selectedIndex = value;
             setState(() {});
@@ -47,7 +49,13 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               icon: Icon(
                 Icons.camera,
               ),
-              label: 'feed',
+              label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+              ),
+              label: 'profile',
             ),
           ]),
     );

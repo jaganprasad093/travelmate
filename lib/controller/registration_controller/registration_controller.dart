@@ -1,13 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationScreenController with ChangeNotifier {
   bool isLoading = false;
+  var collectionReference = FirebaseFirestore.instance.collection("users");
   // write fn to register new user
-  Future<bool> register(
-      {required BuildContext context,
-      required String email,
-      required String password}) async {
+  Future<bool> register({
+    required BuildContext context,
+    required String email,
+    required String password,
+    required String username,
+    required String dob,
+    required String gender,
+  }) async {
     try {
       isLoading = true;
       notifyListeners();
@@ -18,6 +24,10 @@ class RegistrationScreenController with ChangeNotifier {
         password: password,
       );
       if (credential.user?.uid != null) {
+        collectionReference
+            .doc(credential.user!.uid)
+            .set({"username": username, "dob": dob, "gender": gender});
+
         isLoading = false;
         notifyListeners();
         return true;

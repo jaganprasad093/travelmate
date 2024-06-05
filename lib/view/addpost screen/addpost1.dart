@@ -77,6 +77,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                             image: value.selectedFile == null
                                 ? null
                                 : DecorationImage(
+                                    fit: BoxFit.cover,
                                     image: FileImage(value.selectedFile!))),
                       ),
                     ),

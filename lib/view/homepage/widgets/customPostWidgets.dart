@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travelmate/controller/postscreen_Controller/postscreen_controller.dart';
 import 'package:travelmate/model/postModelclaa.dart';
 
 class CustomPostWidgets extends StatelessWidget {
@@ -8,7 +10,7 @@ class CustomPostWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 450,
       color: Colors.black.withOpacity(.5),
       child: Center(
         child: Column(
@@ -34,6 +36,24 @@ class CustomPostWidgets extends StatelessWidget {
                     children: [
                       Icon(Icons.add),
                       Text("follow"),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      PopupMenuButton(
+                        itemBuilder: (context) {
+                          return [
+                            PopupMenuItem(
+                              child: Text("delete"),
+                              onTap: () {
+                                context
+                                    .read<postscreen_controller>()
+                                    .deletePost(post.id!);
+                              },
+                            ),
+                            PopupMenuItem(child: Text("edit")),
+                          ];
+                        },
+                      )
                     ],
                   ),
                 ],
@@ -45,15 +65,15 @@ class CustomPostWidgets extends StatelessWidget {
             ),
             Container(
               color: Colors.amber,
-              height: 280,
+              height: 300,
               child: Image.network(
                 post.image ?? "",
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
             Spacer(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

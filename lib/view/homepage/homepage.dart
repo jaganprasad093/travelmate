@@ -18,7 +18,7 @@ class _HomepageState extends State<Homepage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            leading: Icon(Icons.menu),
+            leadingWidth: 40,
             title: Center(
                 child: Column(
               children: [

@@ -112,13 +112,17 @@ class postscreen_controller with ChangeNotifier {
       log(event.docs.length.toString());
       postList = event.docs
           .map((e) => postModel(
-                caption: e["caption"],
-                location: e["location"],
-                image: e["image"],
-              ))
+              caption: e["caption"],
+              location: e["location"],
+              image: e["image"],
+              id: e.id))
           .toList();
       notifyListeners();
     });
+  }
+
+  deletePost(String id) async {
+    await collectionReference.doc(id).delete();
   }
 
   // image adding to firestorage

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travelmate/controller/event_controller/eventcontroller.dart';
 import 'package:travelmate/model/eventModelclass.dart';
 
 class CustomTrips extends StatelessWidget {
@@ -18,11 +20,20 @@ class CustomTrips extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 300,
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10)),
+              Consumer<eventsControllerScreen>(
+                builder: (context, value, child) => Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: event.travelType == "solo"
+                              ? NetworkImage(
+                                  "https://www.shutterstock.com/image-vector/solo-travel-character-traveling-alone-260nw-2351313483.jpg")
+                              : NetworkImage(
+                                  "https://www.shutterstock.com/image-vector/vector-cartoon-teenagers-road-trip-260nw-390734020.jpg")),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
               ),
               Spacer(),
               Row(
